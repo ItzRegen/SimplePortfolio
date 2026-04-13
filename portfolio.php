@@ -113,10 +113,10 @@
         </div>
         <div class="d-flex justify-content-between">
           <nav class="d-flex flex-column gap-2">
-            <a href="../" class="footer-link">Domov</a>
-            <a href="../about.html" class="footer-link">O mne</a>
-            <a href="../portfolio.html" class="footer-link">Portfólio</a>
-            <a href="../contact.html" class="footer-link">Kontakt</a>
+            <a href="index.php" class="footer-link">Domov</a>
+            <a href="about.php" class="footer-link">O mne</a>
+            <a href="portfolio.php" class="footer-link">Portfólio</a>
+            <a href="contact.php" class="footer-link">Kontakt</a>
           </nav>
           <div class="text-start">
             <h5 class="text-dark fw-bold mt-2">Kontakt</h5>
