@@ -17,10 +17,10 @@
     />
 
     <!-- Custom CSS, pokiaľ je potreba -->
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
 
     <!-- Import JavaScriptu kvôli validácii -->
-    <script src="../js/app.js"></script>
+    <script src="js/app.js"></script>
 
     <!-- Custom font z googlu -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,39 +29,12 @@
   </head>
   <body class="bg-dark text-white">
 
-    <!-- Navigácia -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-warning bg-gradient">
-      <div class="container">
-        <a class="navbar-brand fw-bold text-dark" href="#"
-          ><img src="../img/adrian.png" alt="" class="img-fluid rounded-circle mx-2" height="50" width="50">
-          Adrián Čiffáry</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#mainNav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse justify-content-end" id="mainNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="../">Domov</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../about.html">O mne</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../portfolio.html">Portfólio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="../contact.html">Kontakt</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <?php
+      $file_path = "parts/header.php";
+    if(!include($file_path)) {
+        echo"Failed to include $file_path";
+    } 
+    ?>
 
     <!-- Formulár -->
     <section class="bg-dark py-6" id="contact">
