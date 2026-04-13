@@ -17,7 +17,7 @@
     />
 
     <!-- Custom CSS, pokiaľ je potreba -->
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
 
     <!-- Custom font z googlu -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,39 +26,12 @@
   </head>
   <body class="bg-dark text-white">
 
-    <!-- Navigácia -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-warning bg-gradient">
-      <div class="container">
-        <a class="navbar-brand fw-bold text-dark" href="#"
-          ><img src="../img/adrian.png" alt="" class="img-fluid rounded-circle mx-2" height="50" width="50">
-          Adrián Čiffáry</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#mainNav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse justify-content-end" id="mainNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="../">Domov</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="../about.html">O mne</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../portfolio.html">Portfólio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../contact.html">Kontakt</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <?php
+      $file_path = "parts/header.php";
+    if(!include($file_path)) {
+        echo"Failed to include $file_path";
+    } 
+    ?>
 
     <!-- O mne -->
     <section id="about" class="container d-flex flex-column justify-content-center align-items-center py-6 col-10 col-md-12">
@@ -71,9 +44,9 @@
         Ako som už spomínal, dizajn ma naozaj bavil a prvé, čo mi napadlo, boli webové stránky.</p>
       <p>Začínal som od úplných základov:</p>
       <ul>
-        <li>HTML <img src="../img/html.png" alt="HTML icon" height="20"></li>
-        <li>CSS <img src="../img/css-3.png" alt="CSS icon" height="20"></li>
-        <li>JS <img src="../img/java-script.png" alt="JS icon" height="20"></li>
+        <li>HTML <img src="img/html.png" alt="HTML icon" height="20"></li>
+        <li>CSS <img src="img/css-3.png" alt="CSS icon" height="20"></li>
+        <li>JS <img src="img/java-script.png" alt="JS icon" height="20"></li>
       </ul>
       <p>Neskôr som sa vybral cestou frameworkov a databáz.</p>
     </section>

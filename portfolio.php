@@ -17,10 +17,7 @@
     />
 
     <!-- Custom CSS, pokiaľ je potreba -->
-    <link rel="stylesheet" href="../css/style.css" />
-
-    <!-- Import JavaScriptu kvôli validácii -->
-    <script src="../js/app.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
 
     <!-- Custom font z googlu -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,45 +26,74 @@
   </head>
   <body class="bg-dark text-white">
 
-    <!-- Navigácia -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-warning bg-gradient">
-      <div class="container">
-        <a class="navbar-brand fw-bold text-dark" href="#"
-          ><img src="../img/adrian.png" alt="" class="img-fluid rounded-circle mx-2" height="50" width="50">
-          Adrián Čiffáry</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#mainNav"
-        >
-          <span class="navbar-toggler-icon"></span>
+    <?php
+      $file_path = "parts/header.php";
+    if(!include($file_path)) {
+        echo"Failed to include $file_path";
+    } 
+    ?>
+
+    <!-- Moje projekty -->
+    <section id="projects" class="container py-6 justify-content-center align-items-center text-center mx-auto">
+      <h1 class="fw-bold">Moje projekty</h1>
+      <!-- Slideshow (Carousel) -->
+      <div id="carouselExampleIndicators" class="carousel slide mx-auto mt-4 border" data-bs-ride="carousel">
+
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
+        </div>
+
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="img/porfolio.png" class="d-block w-100" alt="Portfolio">
+            <div class="carousel-caption d-none d-md-block">
+              <h5 class="fw-bold text-shadow-lg text-shadow-orange-500-50">Portfólio</h5>
+              <p>Jednoduchá web stránka vytvorená pomocou HTML, CSS, Bootstrap a JS.</p>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <a href="https://badhub.cz" target="_blank">
+              <img src="img/badhub.png" class="d-block w-100" alt="BadHub.cz">
+            </a>
+            <div class="carousel-caption d-none d-md-block">
+              <h5 class="fw-bold text-shadow-lg text-shadow-orange-500-50">BadHub.cz</h5>
+              <p>Moderná a dynamická web stránka s vlastným obchodom pomocou frameworku Laravel pre môj herný server.</p>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <a href="https://majokraft.com" target="_blank">
+              <img src="img/majokraft.png" class="d-block w-100" alt="Majokraft.com">
+            </a>
+            <div class="carousel-caption d-none d-md-block">
+              <h5 class="fw-bold text-shadow-lg text-shadow-orange-500-50">Majokraft.com</h5>
+              <p>Moderná a dynamická web stránka s vlastným obchodom pomocou frameworku Laravel.</p>
+            </div>
+          </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Predchádzajúca</span>
         </button>
 
-        <div class="collapse navbar-collapse justify-content-end" id="mainNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="../">Domov</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../about.html">O mne</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../portfolio.html">Portfólio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../contact.html">Kontakt</a>
-            </li>
-          </ul>
-        </div>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Ďalšia</span>
+        </button>
       </div>
-    </nav>
+    </section>
 
-    <!-- Thank you -->
-    <div class="container d-flex flex-column justify-content-center align-items-center min-vh-100 col-10 text-center text-md-start col-md-12">
-        <img src="../img/check.png" alt="" height="100" class="mb-4">
-        <h2 class="text-white text-uppercase fw-bold">Ďakujeme</h2>
-        <h4 class="text-white">Správa bola odoslaná a onedlho čakajte spätnú väzbu na zadanom maile.</h4>
+    <!-- Info -->
+    <div class="container d-flex flex-column justify-content-center text-start py-3 mx-auto">
+        <h2 class="fw-bold text-warning">Info</h2>
+        <p class="col-10 col-md-6">
+          Projekty <span class="fw-bold">BadHub.cz</span> a <span class="fw-bold">Majokraft.com</span> boli tvorené spoločne s mojim kolegom, ktorý má priviedol k webom
+          a má viacero skúseností. Ja som sa staral hlavne o designovú stránku spoločne s responzivitou a dynamickým panelom.
+        </p>
     </div>
 
     <!-- Footer -->
