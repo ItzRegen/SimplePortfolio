@@ -40,12 +40,13 @@
     <section class="bg-dark py-6" id="contact">
       <div class="container col-9 col-md-12">
         <h2 class="text-center mb-4 fw-bold">Kontaktuj ma</h2>
-        <form class="mx-auto" style="max-width: 500px" id="kontaktForm">
+        <form class="mx-auto" style="max-width: 500px" id="kontaktForm" method="post" action="db/spracovanieFormulara.php">
           <div class="mb-3">
             <label for="meno" class="form-label">Meno</label>
             <input
               type="text"
               id="meno"
+              name="meno"
               class="form-control custom-focus"
               placeholder="Zadajte svoje meno"
             />
@@ -55,6 +56,7 @@
             <input
               type="email"
               id="email"
+              name="email"
               class="form-control custom-focus"
               placeholder="Zadajte svoj email"
             />
@@ -63,6 +65,7 @@
             <label for="sprava" class="form-label">Správa</label>
             <textarea
               id="sprava"
+              name="sprava"
               rows="4"
               class="form-control custom-focus"
               placeholder="Vaša správa..."
@@ -110,10 +113,10 @@
         </div>
         <div class="d-flex justify-content-between">
           <nav class="d-flex flex-column gap-2">
-            <a href="../" class="footer-link">Domov</a>
-            <a href="../about.html" class="footer-link">O mne</a>
-            <a href="../portfolio.html" class="footer-link">Portfólio</a>
-            <a href="../contact.html" class="footer-link">Kontakt</a>
+            <a href="index.php" class="footer-link">Domov</a>
+            <a href="about.php" class="footer-link">O mne</a>
+            <a href="portfolio.php" class="footer-link">Portfólio</a>
+            <a href="contact.php" class="footer-link">Kontakt</a>
           </nav>
           <div class="text-start">
             <h5 class="text-dark fw-bold mt-2">Kontakt</h5>

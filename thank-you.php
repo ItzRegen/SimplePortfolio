@@ -17,10 +17,10 @@
     />
 
     <!-- Custom CSS, pokiaľ je potreba -->
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
 
     <!-- Import JavaScriptu kvôli validácii -->
-    <script src="../js/app.js"></script>
+    <script src="js/app.js"></script>
 
     <!-- Custom font z googlu -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,7 +38,7 @@
 
     <!-- Thank you -->
     <div class="container d-flex flex-column justify-content-center align-items-center min-vh-100 col-10 text-center text-md-start col-md-12">
-        <img src="../img/check.png" alt="" height="100" class="mb-4">
+        <img src="img/check.png" alt="" height="100" class="mb-4">
         <h2 class="text-white text-uppercase fw-bold">Ďakujeme</h2>
         <h4 class="text-white">Správa bola odoslaná a onedlho čakajte spätnú väzbu na zadanom maile.</h4>
     </div>
@@ -60,10 +60,10 @@
         </div>
         <div class="d-flex justify-content-between">
           <nav class="d-flex flex-column gap-2">
-            <a href="../" class="footer-link">Domov</a>
-            <a href="../about.html" class="footer-link">O mne</a>
-            <a href="../portfolio.html" class="footer-link">Portfólio</a>
-            <a href="../contact.html" class="footer-link">Kontakt</a>
+            <a href="index.php" class="footer-link">Domov</a>
+            <a href="about.php" class="footer-link">O mne</a>
+            <a href="portfolio.php" class="footer-link">Portfólio</a>
+            <a href="contact.php" class="footer-link">Kontakt</a>
           </nav>
           <div class="text-start">
             <h5 class="text-dark fw-bold mt-2">Kontakt</h5>
