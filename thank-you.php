@@ -43,38 +43,12 @@
         <h4 class="text-white">Správa bola odoslaná a onedlho čakajte spätnú väzbu na zadanom maile.</h4>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-warning bg-gradient text-white text-center py-4 mt-auto">
-      <div class="container d-none d-md-flex flex-row justify-content-between mx-auto">
-        <div class="col-md-3 mb-2">
-          <h5 class="text-dark fw-bold text-start">O mne</h5>
-          <p class="small text-dark text-start w-75">
-            Som začínajúci web developer, ktorý sa zameriava na tvorbu moderných webových stránok.
-          </p>
-        </div>
-
-        <nav class="d-flex flex-column">
-          <a href="../" class="footer-link mx-2">Domov</a>
-          <a href="../about.html" class="footer-link mx-2">O mne</a>
-          <a href="../portfolio.html" class="footer-link mx-2">Portfólio</a>
-          <a href="../contact.html" class="footer-link mx-2">Kontakt</a>
-        </nav>
-
-        <div class="col-md-3">
-          <h5 class="text-dark fw-bold text-start">Kontakt</h5>
-          <div class="small text-dark text-start">
-            <p class="mb-1">
-              Mail: <a href="mailto:info@mojadomena.sk" class="text-white">adrian.ciffary@gmail.com</a>
-            </p>
-            <p class="mb-1">
-              Instagram: <a href="https://www.instagram.com/ciffary.a" target="_blank" class="text-white">@ciffary.a</a>
-            </p>
-            <p class="mb-1">
-              Tel. číslo: <a href="tel:+421948005764" class="text-white">+421 948 005 764</a>
-            </p>
-          </div>
-        </div>
-      </div>
+    <?php
+      $file_path = "parts/footer.php";
+    if(!include($file_path)) {
+        echo"Failed to include $file_path";
+    } 
+    ?>
 
       <!-- Na mobile -->
       <div class="container d-flex d-md-none flex-column">
