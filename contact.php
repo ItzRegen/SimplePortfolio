@@ -40,7 +40,7 @@
     <section class="bg-dark py-6" id="contact">
       <div class="container col-9 col-md-12">
         <h2 class="text-center mb-4 fw-bold">Kontaktuj ma</h2>
-        <form class="mx-auto" style="max-width: 500px" id="kontaktForm" method="post" action="db/spracovanieFormulara.php">
+        <form class="mx-auto" style="max-width: 500px" id="kontaktForm" method="post" action="db/form.php">
           <div class="mb-3">
             <label for="meno" class="form-label">Meno</label>
             <input
