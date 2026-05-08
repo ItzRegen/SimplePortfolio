@@ -63,7 +63,7 @@
 
     <!-- Tlačidlo -->
     <div class="container text-center pb-5">
-      <a href="../about.html" class="btn btn-secondary">Prejsť na informácie o mne</a>
+      <a href="about.php" class="btn btn-secondary">Prejsť na informácie o mne</a>
     </div>
 
     <?php

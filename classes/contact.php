@@ -2,37 +2,15 @@
 
 namespace form;
 
-require_once('../db/config.php');
+require_once('../classes/database.php');
 
-use PDO;
-use PDOException;
+class Contact extends \Database {
 
-class Contact {
-
-    private $conn;
+    protected $connection;
 
     public function __construct() {
         $this->connect();
-    }
-
-    private function connect() {
-        $config = DATABASE;
-
-        $options = array(
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        );
-
-        try {
-            $this->conn = new PDO(
-                'mysql:host=' . $config['HOST'] . ';dbname=' . $config['DBNAME'] . ';port=' . $config['PORT'],
-                $config['USER_NAME'],
-                $config['PASSWORD'],
-                $options
-            );
-        } catch (PDOException $e) {
-            die("Chyba pripojenia: " . $e->getMessage());
-        }
+        $this->connection = $this->getConnection();
     }
 
     public function saveMessage($meno, $email, $sprava) {
@@ -40,7 +18,7 @@ class Contact {
         $sql = "INSERT INTO form (name, email, message)
                 VALUE ('" . $meno . "', '" . $email . "', '" . $sprava . "')";
 
-        $statement = $this->conn->prepare($sql);
+        $statement = $this->connection->prepare($sql);
 
         try {
             $insert = $statement->execute();
@@ -54,6 +32,6 @@ class Contact {
     }
 
     public function __destruct() {
-        $this->conn = null;
+        $this->connection = null;
     }
 }
