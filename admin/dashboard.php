@@ -4,6 +4,18 @@ if (!isset($_SESSION['user_id'])) {
     header('Location: http://localhost/SimplePortfolio/login.php');
     exit();
 }
+
+if (!defined('__ROOT__')) {
+    define('__ROOT__', dirname(dirname(__FILE__)));
+}
+require_once(__ROOT__.'/classes/portfolio.php');
+require_once(__ROOT__.'/classes/users.php');
+
+$portfolio = new Portfolio();
+$users = new Users();
+
+$projektovCount = count($portfolio->getAll());
+$usersCount = count($users->getAll());
 ?>
 
 <!DOCTYPE html>
@@ -46,24 +58,24 @@ if (!isset($_SESSION['user_id'])) {
           </li>
 
           <li class="nav-item">
-            <a href="users.php" class="nav-link text-secondary" style="font-size: 13px;">
-              Používatelia
-            </a>
-          </li>
-          <li class="nav-item">
             <a href="portfolio.php" class="nav-link text-secondary" style="font-size: 13px;">
               Portfólio
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="users.php" class="nav-link text-secondary" style="font-size: 13px;">
+              Používatelia
             </a>
           </li>
         </ul>
 
         <hr class="border-secondary">
 
-        <a href="index.php" class="nav-link text-secondary mb-2" style="font-size: 13px;">← Domovská stránka</a>
-        <a href="db/logout.php" class="nav-link text-danger" style="font-size: 13px;">Odhlásiť sa</a>
+        <a href="../index.php" class="nav-link text-secondary mb-2" style="font-size: 13px;">← Domovská stránka</a>
+        <a href="../db/logout.php" class="nav-link text-danger" style="font-size: 13px;">Odhlásiť sa</a>
       </div>
 
-      <!-- Main content -->
       <div class="flex-grow-1 p-4">
 
         <!-- Topbar -->
@@ -72,19 +84,19 @@ if (!isset($_SESSION['user_id'])) {
           <span class="badge bg-warning text-dark" style="font-size: 11px; letter-spacing: .06em;">● Prihlásený</span>
         </div>
 
-        <!-- Stat cards -->
+        <!-- Štatistiky -->
         <div class="row g-3 mb-4">
           <div class="col-6 col-md-3">
             <div class="card border border-secondary rounded-3 p-3" style="background-color: #111;">
               <div class="text-secondary mb-1" style="font-size: 11px; text-transform: uppercase; letter-spacing: .08em;">Projekty</div>
-              <div class="fw-bold" style="font-size: 28px;">0</div>
+              <div class="fw-bold" style="font-size: 28px;"><?= $projektovCount ?></div>
               <div class="text-secondary" style="font-size: 11px;">celkom</div>
             </div>
           </div>
           <div class="col-6 col-md-3">
             <div class="card border border-secondary rounded-3 p-3" style="background-color: #111;">
               <div class="text-secondary mb-1" style="font-size: 11px; text-transform: uppercase; letter-spacing: .08em;">Používatelia</div>
-              <div class="fw-bold" style="font-size: 28px;">0</div>
+              <div class="fw-bold" style="font-size: 28px;"><?= $usersCount ?></div>
               <div class="text-secondary" style="font-size: 11px;">registrovaní</div>
             </div>
           </div>
@@ -97,25 +109,9 @@ if (!isset($_SESSION['user_id'])) {
           </div>
         </div>
 
-        <!-- Users & Portfolio sections -->
         <div class="row g-3">
 
-          <!-- Users -->
-          <div class="col-12 col-md-6">
-            <div class="card border border-secondary rounded-3 p-4" style="background-color: #111;">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <h6 class="fw-bold mb-0 text-uppercase" style="font-size: 12px; letter-spacing: .1em; color: #888;">Používatelia</h6>
-                <a href="users.php" class="btn btn-sm btn-outline-warning" style="font-size: 11px;">Spravovať</a>
-              </div>
-              <p class="text-secondary mb-3" style="font-size: 12px;">Správa používateľských účtov – zobrazenie, úprava, mazanie.</p>
-              <div class="d-flex gap-2">
-                <a href="users.php?action=add" class="btn btn-warning btn-sm fw-semibold" style="font-size: 12px;">+ Pridať</a>
-                <a href="users.php" class="btn btn-outline-secondary btn-sm" style="font-size: 12px;">Zobraziť všetkých</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Portfolio -->
+          <!-- Portfólio -->
           <div class="col-12 col-md-6">
             <div class="card border border-secondary rounded-3 p-4" style="background-color: #111;">
               <div class="d-flex justify-content-between align-items-center mb-3">
@@ -126,6 +122,21 @@ if (!isset($_SESSION['user_id'])) {
               <div class="d-flex gap-2">
                 <a href="portfolio.php?action=add" class="btn btn-warning btn-sm fw-semibold" style="font-size: 12px;">+ Pridať</a>
                 <a href="portfolio.php" class="btn btn-outline-secondary btn-sm" style="font-size: 12px;">Zobraziť všetky</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Používatelia -->
+          <div class="col-12 col-md-6">
+            <div class="card border border-secondary rounded-3 p-4" style="background-color: #111;">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="fw-bold mb-0 text-uppercase" style="font-size: 12px; letter-spacing: .1em; color: #888;">Používatelia</h6>
+                <a href="users.php" class="btn btn-sm btn-outline-warning" style="font-size: 11px;">Spravovať</a>
+              </div>
+              <p class="text-secondary mb-3" style="font-size: 12px;">Správa používateľských účtov – zobrazenie, úprava.</p>
+              <div class="d-flex gap-2">
+                <a href="users.php?action=add" class="btn btn-warning btn-sm fw-semibold" style="font-size: 12px;">Zmena hesla</a>
+                <a href="users.php" class="btn btn-outline-secondary btn-sm" style="font-size: 12px;">Zobraziť všetkých</a>
               </div>
             </div>
           </div>

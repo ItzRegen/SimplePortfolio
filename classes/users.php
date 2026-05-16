@@ -1,6 +1,8 @@
 <?php
 
-define('__ROOT__', dirname(dirname(__FILE__)));
+if (!defined('__ROOT__')) {
+    define('__ROOT__', dirname(dirname(__FILE__)));
+}
 require_once(__ROOT__.'/classes/Database.php');
 
 class Users extends Database {
@@ -37,5 +39,21 @@ class Users extends Database {
         session_destroy();
         header('Location: http://localhost/SimplePortfolio/index.php');
         exit();
+    }
+
+    public function getAll() {
+        $sql = "SELECT * FROM users";
+        $statement = $this->connection->prepare($sql);
+        $statement->execute();
+        return $statement->fetchAll();
+    }
+
+    public function updatePassword($id, $password) {
+        $hashed = password_hash($password, PASSWORD_DEFAULT);
+        $sql = "UPDATE users SET password = ? WHERE ID = ?";
+        $statement = $this->connection->prepare($sql);
+        $statement->bindParam(1, $hashed);
+        $statement->bindParam(2, $id);
+        $statement->execute();
     }
 }

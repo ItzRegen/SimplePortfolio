@@ -13,7 +13,7 @@ if (empty($email) || empty($password)) {
 try {
     $users = new Users();
     $users->login($email, $password);
-    return header('Location: http://localhost/SimplePortfolio/dashboard.php');
+    return header('Location: http://localhost/SimplePortfolio/admin/dashboard.php');
 } catch (Exception $e) {
     http_response_code(404);
     echo("Chyba: " . $e->getMessage());
