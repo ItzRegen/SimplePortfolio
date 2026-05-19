@@ -15,6 +15,6 @@ try {
     $users->login($email, $password);
     return header('Location: http://localhost/SimplePortfolio/admin/dashboard.php');
 } catch (Exception $e) {
-    http_response_code(404);
-    echo("Chyba: " . $e->getMessage());
+    header('Location: ../login.php?error=1');
+    exit();
 }
