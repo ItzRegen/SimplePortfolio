@@ -29,6 +29,12 @@
         <h2 class="fw-bold text-center mb-1">Admin Prihlásenie</h2>
         <p class="text-center text-secondary small mb-4">Prihláste sa pre správu portfólia.</p>
 
+        <?php if (isset($_GET['error'])): ?>
+          <div class="alert alert-danger py-2 text-center mb-3" style="font-size: 13px;">
+            Nesprávny email alebo heslo.
+          </div>
+        <?php endif; ?>
+
         <form method="post" action="db/login.php">
 
           <div class="mb-3">
