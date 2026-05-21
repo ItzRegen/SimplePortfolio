@@ -1,3 +1,12 @@
+<?php
+if (!defined('__ROOT__')) {
+    define('__ROOT__', dirname(__FILE__));
+}
+require_once(__ROOT__.'/classes/portfolio.php');
+$portfolio = new Portfolio();
+$projekty = $portfolio->getAll();
+?>
+
 <!DOCTYPE html>
 <html lang="sk">
   <head>
@@ -37,54 +46,53 @@
     <section id="projects" class="container py-6 justify-content-center align-items-center text-center mx-auto">
       <h1 class="fw-bold">Moje projekty</h1>
       <!-- Slideshow (Carousel) -->
-      <div id="carouselExampleIndicators" class="carousel slide mx-auto mt-4 border" data-bs-ride="carousel">
-
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
-        </div>
-
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="img/porfolio.png" class="d-block w-100" alt="Portfolio">
-            <div class="carousel-caption d-none d-md-block">
-              <h5 class="fw-bold text-shadow-lg text-shadow-orange-500-50">Portfólio</h5>
-              <p>Jednoduchá web stránka vytvorená pomocou HTML, CSS, Bootstrap a JS.</p>
-            </div>
-          </div>
-
-          <div class="carousel-item">
-            <a href="https://badhub.cz" target="_blank">
-              <img src="img/badhub.png" class="d-block w-100" alt="BadHub.cz">
-            </a>
-            <div class="carousel-caption d-none d-md-block">
-              <h5 class="fw-bold text-shadow-lg text-shadow-orange-500-50">BadHub.cz</h5>
-              <p>Moderná a dynamická web stránka s vlastným obchodom pomocou frameworku Laravel pre môj herný server.</p>
-            </div>
-          </div>
-
-          <div class="carousel-item">
-            <a href="https://majokraft.com" target="_blank">
-              <img src="img/majokraft.png" class="d-block w-100" alt="Majokraft.com">
-            </a>
-            <div class="carousel-caption d-none d-md-block">
-              <h5 class="fw-bold text-shadow-lg text-shadow-orange-500-50">Majokraft.com</h5>
-              <p>Moderná a dynamická web stránka s vlastným obchodom pomocou frameworku Laravel.</p>
-            </div>
+      <?php if (empty($projekty)): ?>
+        <div class="d-flex justify-content-center mt-4">
+          <div class="card border border-secondary rounded-3 p-5 text-center" style="background-color: #ffffff0d; max-width: 400px; width: 100%;">
+            <p class="text-white fw-bold mb-1">Žiadne projekty</p>
+            <p class="text-secondary small mb-0">Momentálne tu nie sú žiadne projekty. Skúste to neskôr.</p>
           </div>
         </div>
+      <?php else: ?>
 
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Predchádzajúca</span>
-        </button>
+        <div id="carouselExampleIndicators" class="carousel slide mx-auto mt-4 border" data-bs-ride="carousel">
 
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Ďalšia</span>
-        </button>
-      </div>
+          <div class="carousel-indicators">
+            <?php foreach ($projekty as $i => $p): ?>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<?= $i ?>" <?= $i === 0 ? 'class="active"' : '' ?>></button>
+            <?php endforeach; ?>
+          </div>
+
+          <div class="carousel-inner">
+            <?php foreach ($projekty as $i => $p): ?>
+                <div class="carousel-item <?= $i === 0 ? 'active' : '' ?>">
+                <?php if ($p['url']): ?>
+                  <a href="<?= htmlspecialchars($p['url']) ?>" target="_blank">
+                <?php endif; ?>
+                  <img src="uploads/<?= htmlspecialchars($p['image']) ?>" class="d-block w-100" alt="<?= htmlspecialchars($p['title']) ?>">
+                <?php if ($p['url']): ?>
+                  </a>
+                <?php endif; ?>
+                <div class="carousel-caption d-none d-md-block">
+                  <h5 class="fw-bold"><?= htmlspecialchars($p['title']) ?></h5>
+                  <p><?= htmlspecialchars($p['description']) ?></p>
+                </div>
+              </div>
+            <?php endforeach; ?>
+          </div>
+
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Predchádzajúca</span>
+          </button>
+
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Ďalšia</span>
+          </button>
+        </div>
+
+      <?php endif; ?>
     </section>
 
     <!-- Info -->
