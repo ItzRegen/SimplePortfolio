@@ -135,9 +135,9 @@ $projekty = $portfolio->getAll();
                     </tr>
                   </thead>
                   <tbody>
-                    <?php foreach ($projekty as $p): ?>
+                    <?php $i = 1; foreach ($projekty as $p): ?>
                       <tr>
-                        <td class="text-secondary" style="font-size: 13px;"><?= $p['ID'] ?></td>
+                        <td class="text-secondary" style="font-size: 13px;"><?= $i++ ?></td>
                         <td>
                           <img src="../uploads/<?= htmlspecialchars($p['image']) ?>" style="width: 50px; height: 50px; object-fit: cover; border-radius: 6px;">
                         </td>
