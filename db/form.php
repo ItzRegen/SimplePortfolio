@@ -2,8 +2,6 @@
 
 require_once('../classes/contact.php');
 
-use form\Contact;
-
 $meno = $_POST['meno'];
 $email = $_POST['email'];
 $sprava = $_POST['sprava'];

@@ -1,10 +1,8 @@
 <?php
 
-namespace form;
-
 require_once('../classes/database.php');
 
-class Contact extends \Database {
+class Contact extends Database {
 
     protected $connection;
 
